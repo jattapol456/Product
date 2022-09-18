@@ -1,0 +1,32 @@
+.probuct:hover {
+   transform: translate(0, -20px) scale(1.1);
+}
+.card .description {
+    text-align: center;
+    opacity: 0;
+    max-height:0;
+    transition: all 0.3s ease;
+ }
+
+ .card {
+   overflow: auto;
+ }
+
+ .card::-webkit-scrollbar {
+   display: none;
+ }
+ 
+ .card:hover {
+    height: 60%;
+ }
+ 
+ .card:hover .info {
+    height: 50%;
+ }
+ 
+ .card:hover .description {
+    transition: all 0.3s ease;
+    opacity: 1;
+ }
+
+ 

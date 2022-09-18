@@ -8,12 +8,28 @@ import Herocard from "./components/herocard";
 
 function App() {
   const [data, setData] = useState([]);
+  const [tempData, setTempData] = useState([]);
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [isMenSClothing, setIsMenSClothing] = useState(false);
+  
   useEffect(() => {
     getapi();
   }, []);
+
+  useEffect(() => {
+    let temp = tempData;
+
+    if (isMenSClothing)
+      setData(
+        temp.filter(
+          (e) => e.category == "men's clothing"
+        )
+      );
+    else if (isMenSClothing)
+      setData(temp.filter((e) => e.category == "men's clothing"));
+    else setData(tempData);
+  }, [isMenSClothing]);
 
   const addProductToCart = (id) => {
     const itemList =
@@ -32,7 +48,6 @@ function App() {
             return item;
           });
     setCart(itemList);
-    console.log(itemList);
   };
 
   const removeQuantityProduct = (id) => {
@@ -57,6 +72,7 @@ function App() {
   const getapi = () => {
     axios.get("https://fakestoreapi.com/products").then((res) => {
       setData(res.data);
+      setTempData(res.data);
       setLoading(false);
     });
   };
@@ -76,7 +92,9 @@ function App() {
             {loading ? (
               <Cardloadeing />
             ) : (
-              <Herocard data={data} addProductToCart={addProductToCart} />
+              <Herocard data={data} addProductToCart={addProductToCart} onClickCategory={() => {
+                setIsMenSClothing(!isMenSClothing);
+              }}/>
             )}
           </div>
         </section>

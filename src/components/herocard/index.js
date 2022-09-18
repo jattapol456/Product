@@ -1,11 +1,15 @@
 import React from "react";
 import Card from "../card";
 
-export default function Herocard({ data, addProductToCart }) {
+export default function Herocard({ data, addProductToCart, onClickCategory }) {
+
   return (
     <div>
       <div className="flex flex-wrap pb-[25px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-        <p className="capitalize cursor-pointer rounded-lg px-2 hover:opacity-70 bg-blue-300">
+        <p
+          className="capitalize cursor-pointer rounded-lg px-2 hover:opacity-70 bg-blue-300"
+          onClick={onClickCategory}
+        >
           men's clothing
         </p>
         <p className="capitalize cursor-pointer rounded-lg px-2 hover:opacity-70 bg-blue-300">

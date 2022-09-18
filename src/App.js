@@ -19,7 +19,7 @@ function App() {
     const itemList =
       cart.length <= 0
         ? [{ id: id, quantity: 1 }]
-        : cart.find((e) => e.id == id) == undefined
+        : cart.find((e) => e.id === id) === undefined
         ? [...cart, { id: id, quantity: 1 }]
         : cart.map((item) => {
             if (item.id === id) {
@@ -36,8 +36,8 @@ function App() {
   };
 
   const removeQuantityProduct = (id) => {
-    if (cart.find((e) => e.id == id && e.quantity == 1) != undefined) {
-      const removeQuantity = cart.filter((e) => e.id != id);
+    if (cart.find((e) => e.id === id && e.quantity === 1) !== undefined) {
+      const removeQuantity = cart.filter((e) => e.id !== id);
       setCart(removeQuantity);
     } else {
       const removeQuantity = cart.map((item) => {

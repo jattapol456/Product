@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Cardloadeing({}) {
+export default function Cardloadeing() {
   return (
     <div>
       <div>

@@ -6,7 +6,7 @@ export default function Navbar({data, addProductToCart, removeQuantityProduct, c
   const [allTotal, setAllTotal] = useState(0);
   
   useEffect(() => {
-    allPrice()
+    allPrice();
   }, [cart]);
 
   const onShow = () => {
@@ -14,7 +14,7 @@ export default function Navbar({data, addProductToCart, removeQuantityProduct, c
   };
 
   const getProducts = (id) => {
-    return data.find((e) => e.id == id);
+    return data.find((e) => e.id === id);
   };
 
   const allPrice = () => {

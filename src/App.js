@@ -12,7 +12,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isMenSClothing, setIsMenSClothing] = useState(false);
-  
+
   useEffect(() => {
     getapi();
   }, []);
@@ -20,15 +20,11 @@ function App() {
   useEffect(() => {
     let temp = tempData;
 
-    if (isMenSClothing)
-      setData(
-        temp.filter(
-          (e) => e.category == "men's clothing"
-        )
-      );
-    else if (isMenSClothing)
-      setData(temp.filter((e) => e.category == "men's clothing"));
-    else setData(tempData);
+    if (isMenSClothing) {
+      setData(temp.filter((e) => e.category === "men's clothing"));
+    } else if (isMenSClothing) {
+      setData(temp.filter((e) => e.category === "men's clothing"));
+    } else setData(tempData);
   }, [isMenSClothing]);
 
   const addProductToCart = (id) => {
@@ -87,14 +83,16 @@ function App() {
       <main className="pt-[70px] min-h-[60vh] py-5 space-y-6">
         <section className="pt-[25px] pb-5">
           <div className="container mx-auto">
-            
-
             {loading ? (
               <Cardloadeing />
             ) : (
-              <Herocard data={data} addProductToCart={addProductToCart} onClickCategory={() => {
-                setIsMenSClothing(!isMenSClothing);
-              }}/>
+              <Herocard
+                data={data}
+                addProductToCart={addProductToCart}
+                onClickCategory={() => {
+                  setIsMenSClothing(!isMenSClothing);
+                }}
+              />
             )}
           </div>
         </section>

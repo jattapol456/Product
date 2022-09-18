@@ -14,8 +14,8 @@ function App() {
   const [isMenSClothing, setIsMenSClothing] = useState(false);
 
   useEffect(() => {
-    getapi();
-  }, []);
+    getapi()
+  }, [])
 
   useEffect(() => {
     let temp = tempData;

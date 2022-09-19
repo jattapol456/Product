@@ -12,20 +12,29 @@ function App() {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isMenSClothing, setIsMenSClothing] = useState(false);
+  const [isJewelery, setIsJewelery] = useState(true);
+  const [isElectronics, setIsElectronics] = useState(true);
+  const [isWomenSClothing, setIsWomenSClothing] = useState(true);
 
   useEffect(() => {
-    getapi()
-  }, [])
+    getapi();
+  }, []);
 
   useEffect(() => {
     let temp = tempData;
 
     if (isMenSClothing) {
       setData(temp.filter((e) => e.category === "men's clothing"));
-    } else if (isMenSClothing) {
-      setData(temp.filter((e) => e.category === "men's clothing"));
-    } else setData(tempData);
-  }, [isMenSClothing]);
+    } else if (isJewelery) {
+      setData(temp.filter((e) => e.category === "jewelery"));
+    } else if (isElectronics) {
+      setData(temp.filter((e) => e.category === "electronics"));
+    } else if (isWomenSClothing) {
+      setData(temp.filter((e) => e.category === "women's clothing"));
+    } else {
+      setData(tempData);
+    }
+  }, [isMenSClothing, isJewelery, isElectronics, isWomenSClothing]);
 
   const addProductToCart = (id) => {
     const itemList =
@@ -89,8 +98,17 @@ function App() {
               <Herocard
                 data={data}
                 addProductToCart={addProductToCart}
-                onClickCategory={() => {
+                onClickCategory1={() => {
                   setIsMenSClothing(!isMenSClothing);
+                }}
+                onClickCategory2={() => {
+                  setIsJewelery(!isJewelery);
+                }}
+                onClickCategory3={() => {
+                  setIsElectronics(!isElectronics);
+                }}
+                onClickCategory4={() => {
+                  setIsWomenSClothing(!isWomenSClothing);
                 }}
               />
             )}

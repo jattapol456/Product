@@ -63,10 +63,8 @@ export default function Navbar({data, addProductToCart, removeQuantityProduct, c
                         </div>
                       </div>
                       <div className="flex-1 flex flex-col justify-between text-right items-end">
-                        <div className="text-sm font-bold text-red-500 cursor-pointer" onClick={() => {removeQuantityProduct(item.id)}}>
-                          Delete
-                        </div>
-                        <div class="text-sm font-bold">${getProducts(item.id).price * item.quantity}</div>
+                        <div className="text-sm font-bold text-red-500 cursor-pointer"></div>
+                        <div class="text-sm font-bold">${(getProducts(item.id).price * item.quantity).toFixed(2)}</div>
                       </div>
                     </div>
                   </div>
@@ -74,7 +72,7 @@ export default function Navbar({data, addProductToCart, removeQuantityProduct, c
               ))}
               <div class="flex font-bold pt-6">
                 <p>Total</p>
-                <p class="ml-auto">${allTotal}</p>
+                <p class="ml-auto">${allTotal.toFixed(2)}</p>
               </div>
             </div>
           ) : null}

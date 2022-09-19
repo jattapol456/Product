@@ -7,7 +7,7 @@ export default function Navbar({data, addProductToCart, removeQuantityProduct, c
   
   useEffect(() => {
     allPrice();
-  }, [cart]);
+  }, []);
 
   const onShow = () => {
     setIsShow(!isShow);
